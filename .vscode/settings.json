@@ -1,0 +1,24 @@
+{
+  "//": "Stops the Console Ninja extension from instrumenting (and corrupting) the Next.js dev bundle, which otherwise breaks React hydration so the app loads but is frozen/unclickable. next.js + webpack are disabled; all other tools keep their defaults.",
+  "console-ninja.toolsToEnableSupportAutomaticallyFor": {
+    "vite": true,
+    "angular": true,
+    "jest": true,
+    "webpack": false,
+    "next.js": false,
+    "nest.js": true,
+    "cypress": true,
+    "http-server": true,
+    "serve": true,
+    "live-server": true,
+    "nuxt": true,
+    "remix": true,
+    "qwik": true,
+    "hydrogen": true,
+    "serverless": true,
+    "astro": true,
+    "react-native": true,
+    "live-server-extension": false,
+    "live-preview-extension": false
+  }
+}
