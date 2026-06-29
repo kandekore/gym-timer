@@ -24,7 +24,7 @@ export class SoundManager {
   private loadStarted = false;
 
   private muted = false;
-  private volume = 0.8;
+  private volume = 1;
   private voiceEnabled = true;
 
   /** Lazily create the AudioContext (must happen after a user gesture). */

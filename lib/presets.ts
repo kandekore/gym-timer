@@ -14,7 +14,7 @@ export const DEFAULT_SETTINGS: TimerSettings = {
 
 export const DEFAULT_SOUND: SoundSettings = {
   muted: false,
-  volume: 0.8,
+  volume: 1,
   voiceEnabled: true,
 };
 

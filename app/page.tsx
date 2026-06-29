@@ -11,6 +11,7 @@ import {
 } from "@/lib/types";
 import { DEFAULT_SETTINGS, DEFAULT_SOUND } from "@/lib/presets";
 import {
+  clearStorage,
   loadPresets,
   loadSettings,
   loadSound,
@@ -90,6 +91,14 @@ export default function Home() {
     },
     []
   );
+
+  // Wipe persisted data and restore factory defaults.
+  const handleReset = useCallback(() => {
+    clearStorage();
+    setSettings(DEFAULT_SETTINGS);
+    setSound(DEFAULT_SOUND);
+    setPresets([]);
+  }, []);
 
   const timer = useIntervalTimer({ settings, onCue });
   const fullscreen = useFullscreen();
@@ -301,6 +310,7 @@ export default function Home() {
         onDeletePreset={(id) =>
           setPresets((prev) => prev.filter((p) => p.id !== id))
         }
+        onReset={handleReset}
       />
     </main>
   );

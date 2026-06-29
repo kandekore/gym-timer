@@ -16,6 +16,7 @@ interface Props {
   presets: Preset[];
   onSavePreset: (p: Preset) => void;
   onDeletePreset: (id: string) => void;
+  onReset: () => void;
 }
 
 type Tab = "session" | "presets" | "sound";
@@ -36,8 +37,19 @@ export function SettingsDrawer({
   presets,
   onSavePreset,
   onDeletePreset,
+  onReset,
 }: Props) {
   const [tab, setTab] = useState<Tab>("session");
+
+  const handleReset = () => {
+    if (
+      window.confirm(
+        "Reset all settings, sounds and saved presets back to defaults? This clears stored data and can't be undone."
+      )
+    ) {
+      onReset();
+    }
+  };
 
   if (!open) return null;
 
@@ -95,6 +107,18 @@ export function SettingsDrawer({
           {tab === "sound" && (
             <SoundSettings sound={sound} onChange={onSoundChange} />
           )}
+        </div>
+
+        <div className="border-t border-white/10 px-5 py-4">
+          <button
+            onClick={handleReset}
+            className="w-full rounded-xl bg-red-600/90 px-4 py-3 font-bold text-white hover:bg-red-600"
+          >
+            Reset to defaults
+          </button>
+          <p className="mt-2 text-center text-xs text-slate-400">
+            Clears saved settings, sounds &amp; presets from this device.
+          </p>
         </div>
       </div>
     </div>

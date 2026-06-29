@@ -55,3 +55,15 @@ export function loadPresets(): Preset[] {
 export function savePresets(presets: Preset[]): void {
   write(KEYS.presets, presets);
 }
+
+/** Wipe all persisted timer data so the app falls back to defaults. */
+export function clearStorage(): void {
+  if (typeof window === "undefined") return;
+  try {
+    for (const key of Object.values(KEYS)) {
+      window.localStorage.removeItem(key);
+    }
+  } catch {
+    /* storage disabled — ignore */
+  }
+}
